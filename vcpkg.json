@@ -1,0 +1,11 @@
+{
+  "dependencies": [
+    "fmt",
+    "sdl2",
+    "glfw3",
+    "glew",
+    "cjson",
+    "libpng",
+    "glad"
+  ]
+}
