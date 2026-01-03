@@ -1,0 +1,58 @@
+#version 330 core
+out vec4 FragColor;
+
+in vec2 worldPos;
+
+uniform float xOffset;
+uniform float yOffset;
+
+void main()
+{
+    vec2 p = worldPos * 10.0;
+    p.x += xOffset;
+    p.y += yOffset;
+
+    vec2 grid = abs(fract(p) - 0.5);
+
+    float line = min(grid.x, grid.y);
+    float gridLine = step(line, 0.02);
+
+    vec3 gridColor = vec3(0.2, 0.8, 0.2);
+    vec3 background = vec3(0.05);
+
+    vec3 color = mix(background, gridColor, gridLine);
+    FragColor = vec4(color, 1.0);
+}
+
+
+// const char* worldFragmentShaderSource = "#version 330 core\n"
+//     "out vec4 FragColor;\n"
+//     "\n"
+//     "in vec2 worldPos;\n"
+//     "\n"
+//     "uniform float xOffset;\n"
+//     "uniform float yOffset;\n"
+//     "\n"
+//     "void main()\n"
+//     "{\n"
+//     "    // Move the grid downward over time\n"
+//     "    vec2 p = worldPos * 10.0;\n"
+//     "    p.x += xOffset;\n"
+//     "    p.y += yOffset;\n"
+//     "\n"
+//     "    // Create repeating pattern\n"
+//     "    vec2 grid = abs(fract(p) - 0.5);\n"
+//     "\n"
+//     "    // Line thickness\n"
+//     "    float line = min(grid.x, grid.y);\n"
+//     "\n"
+//     "    // Grid line threshold\n"
+//     "    float gridLine = step(line, 0.02);\n"
+//     "\n"
+//     "    // Colors\n"
+//     "    vec3 gridColor = vec3(0.2, 0.8, 0.2);\n"
+//     "    vec3 background = vec3(0.05);\n"
+//     "\n"
+//     "    vec3 color = mix(background, gridColor, gridLine);\n"
+//     "    FragColor = vec4(color, 1.0);\n"
+//     "}\0";อออออออออออออออออออออออออออออออออออออออออออออออออออออออออ
